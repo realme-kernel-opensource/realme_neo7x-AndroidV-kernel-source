@@ -129,15 +129,9 @@ static void migrate_tasks(struct rq *dead_rq, struct rq_flags *rf)
 		 * There's this thread running, bail when that's the only
 		 * remaining thread:
 		 */
-#ifndef CONFIG_HMBIRD_SCHED
-		if (rq->nr_running == 1)
-			break;
-		next = pick_migrate_task(rq);
-#else
 		next = pick_migrate_task(rq);
 		if (next == rq->idle)
 			break;
-#endif
 		/*
 		 * Argh ... no iterator for tasks, we need to remove the
 		 * kthread from the run-queue to continue.

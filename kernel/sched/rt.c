@@ -15,6 +15,7 @@ static int do_sched_rt_period_timer(struct rt_bandwidth *rt_b, int overrun);
 
 struct rt_bandwidth def_rt_bandwidth;
 
+
 /*
  * period over which we measure -rt task CPU usage in us.
  * default: 1s
@@ -26,6 +27,7 @@ unsigned int sysctl_sched_rt_period = 1000000;
  * default: 0.95s
  */
 int sysctl_sched_rt_runtime = 950000;
+static bool cpu_busy_with_softirqs(int cpu);
 
 #ifdef CONFIG_SYSCTL
 static int sysctl_sched_rr_timeslice = (MSEC_PER_SEC * RR_TIMESLICE) / HZ;
